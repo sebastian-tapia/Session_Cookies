@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+
+    <body <%=colorFondo %> >
+        <div class="d-flex justify-content-center mt-5">
+            <div class="jumbotron " style="background-color: white;">
+                <h1 class="display-4">
+                    <%=user.nombre %>, gracias por visitarnos.
+                </h1>
+                <hr class="my-4">
+                <p class="lead">
+                  <a class="btn btn-primary btn-lg" href="/logout" role="button">Salir</a>
+                </p>
+            </div>
+
+        </div>
+        <%- include('partials/script') %>
+    </body>
+
+</html>

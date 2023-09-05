@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('partials/head') %>
+
+  <body>
+
+    <% if (!locals.userLogeado) { %>
+
+      <div class="d-flex justify-content-center ">
+        <div class="flex-column">
+          <form action="" method="POST">
+            <div class="mb-3 mt-5">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input name="nombre" type="text" class="form-control" id="nombre" placeholder="Escriba su nombre..."
+                value="<%= locals.old &&old.nombre %>">
+              <small class="text-bg-danger">
+                <%=locals.errors&& (errors.nombre && errors.nombre.msg) %>
+              </small>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email </label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Escriba su email..."
+                value="<%= locals.email &&old.email %>">
+              <small class="text-bg-danger">
+                <%=locals.errors&& (errors.email && errors.email.msg) %>
+              </small>
+            </div>
+            <div class="mb-3">
+              <label for="edad" class="form-label">Edad </label>
+              <input type="number" class="form-control" id="edad" name="edad" value="<%= locals.edad &&old.edad %>">
+              <small class="text-bg-danger">
+                <%=locals.errors&& (errors.edad && errors.edad.msg) %>
+              </small>
+            </div>
+
+            <div class="mb-3 mt-2">
+              <select class="form-select" aria-label="Default select example" name="color">
+                <option value="" selected hidden>Eliga un color</option>
+                <option value="red">Rojo</option>
+                <option value="blue">Azul</option>
+                <option value="green">Verde</option>
+              </select>
+              <small class="text-bg-danger">
+                <%=locals.errors&& (errors.color && errors.color.msg) %>
+              </small>
+            </div>
+            <div>
+
+              <input type="checkbox" id="remember class=" form-control" name="remember"">
+              <label for=" remember" class="form-label">recordame </label>
+            </div>
+            <button type="submit" class="btn btn-dark">ENVIAR</button>
+
+          </form>
+        </div>
+      </div>
+      <% }else{ %>
+        <div class="d-flex justify-content-center  flex-wrap mt-5">
+          <div class="jumbotron " style="background-color: white;">
+            <h1 class="display-4">
+              Hola <%=userLogeado.nombre %>, elegiste el color: <%=userLogeado.color %>, tu email es:
+                  <%=userLogeado.email %> y tu edad es: <%=userLogeado.edad %>
+            </h1>
+            <hr class="my-4">
+          </div>
+          <div class="d-flex  ">
+            <p class="lead">
+              <a class="btn btn-primary btn-lg" href="/logout" role="button">Salir</a>
+            </p>
+            <p class="lead">
+              <a class="btn btn-primary btn-lg" href="/userLogeado" role="button">Continuar</a>
+            </p>
+          </div>
+        </div>
+      </div>
+        <% } %>
+
+
+          <%- include('partials/script') %>
+  </body>
+
+</html>
